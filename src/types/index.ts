@@ -4,11 +4,20 @@ export type User = {
   avatarUrl: string;
 };
 
-export type PostStatus = 'draft' | 'scheduled' | 'published' | 'awaiting-approval';
+export type PostStatus =
+  | "draft"
+  | "scheduled"
+  | "published"
+  | "awaiting-approval";
 
 export type Activity = {
   id: string;
-  type: 'post-published' | 'post-scheduled' | 'post-new';
+  type: "post-published" | "post-scheduled" | "post-new";
   postTitle: string;
   timestamp: string;
 };
+
+export interface SettingsProps {
+  isOpen: boolean;
+  onClose: () => void;
+}

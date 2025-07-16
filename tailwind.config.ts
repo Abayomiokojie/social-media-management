@@ -11,12 +11,15 @@ const config: Config = {
     extend: {
       // FIXED: Added a precise color palette from the design
       colors: {
-        'brand-header': '#111827',     // For the main top header
-        'brand-bg-main': '#F1F5F9',    // The main background (a light slate)
-        'brand-card-bg': '#FFFFFF',    // The background for all cards
-        'brand-primary-blue': '#2563EB', // The brighter blue for icons
-        'brand-dark-blue': '#1E293B',   // The dark blue for buttons & active states
-      }
+        "brand-header": "#111827", // For the main top header
+        "brand-bg-main": "#F1F5F9", // The main background (a light slate)
+        "brand-card-bg": "#FFFFFF", // The background for all cards
+        "brand-primary-blue": "#2563EB", // The brighter blue for icons
+        "brand-dark-blue": "#1E293B", // The dark blue for buttons & active states
+      },
+      fontFamily: {
+        sans: ["var(--font-poppins)", "sans-serif"],
+      },
     },
   },
   plugins: [],

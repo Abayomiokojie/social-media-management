@@ -1,27 +1,66 @@
-"use client"
+"use client";
 
-// src/components/ContentCalendar.tsx
-import { useState } from 'react';
-import { Plus, CalendarDays } from 'lucide-react';
-import CreatePostForm from './CreatePostForm';
+import { useState } from "react";
+import { CalendarDays, Edit } from "lucide-react";
+import CreatePostForm from "./CreatePostForm";
+import { useMemo } from "react";
 
-// CalendarGrid component remains unchanged
 const CalendarGrid = () => {
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const dates = Array.from({ length: 35 }, (_, i) => i - 4);
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth(); // 0-indexed
+
+  const firstDayOfMonth = new Date(year, month, 1);
+  const startDay = firstDayOfMonth.getDay(); // Which day of the week the month starts (0 = Sunday)
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate(); // Get last day of current month
+
+  const calendarDates = useMemo(() => {
+    const totalCells = 35;
+    const days = [];
+
+    for (let i = 0; i < totalCells; i++) {
+      const dayNumber = i - startDay + 1;
+      days.push(dayNumber > 0 && dayNumber <= daysInMonth ? dayNumber : null);
+    }
+
+    return days;
+  }, [startDay, daysInMonth]);
+
+  const todayDate = today.getDate();
+
+  const dayLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   return (
-    <div className="flex flex-col flex-1">
+    <div className="flex flex-col flex-1 min-h-120">
       <div className="grid grid-cols-7 text-center">
-        {days.map(day => (
-          <div key={day} className="py-2 text-gray-400 font-semibold text-xs uppercase">{day}</div>
+        {dayLabels.map((day) => (
+          <div
+            key={day}
+            className="py-2 text-gray-400 font-semibold text-xs uppercase"
+          >
+            {day}
+          </div>
         ))}
       </div>
       <div className="grid grid-cols-7 grid-rows-5 gap-2 flex-1">
-        {dates.map(date => (
-          <div key={date} className={`p-2 rounded-lg flex flex-col text-sm ${date > 0 ? 'bg-gray-50' : 'bg-transparent'}`}>
-            {date > 0 && (
-              <span className={`font-semibold ${date === 12 ? 'bg-[#1E293B] text-white rounded-md w-7 h-7 flex items-center justify-center' : 'text-gray-700'}`}>
+        {calendarDates.map((date, i) => (
+          <div
+            key={i}
+            className={` rounded-lg flex flex-col text-sm ${
+              date
+                ? "bg-gray-50 hover:shadow-sm hover:translate-y-0.5 transition-all duration-300"
+                : "bg-transparent"
+            }`}
+          >
+            {date && (
+              <span
+                className={`font-semibold ${
+                  date === todayDate
+                    ? "bg-[#1E293B] text-white rounded-md h-full flex p-2 shadow-lg"
+                    : "p-2 text-gray-700"
+                }`}
+              >
                 {date}
               </span>
             )}
@@ -36,26 +75,25 @@ export default function ContentCalendar() {
   const [isCreatingPost, setIsCreatingPost] = useState(false);
 
   return (
-    <div className="bg-[#FFFFFF] p-6 rounded-xl shadow-sm h-full flex flex-col">
-      <div className="flex justify-between items-center mb-6">
+    <div className="bg-[#FFFFFF] p-6 rounded-xl shadow-sm h-full flex flex-col flex-1 min-w-[400px]">
+      <div className="flex justify-between items-center mb-6 gap-2">
         <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
           <CalendarDays className="text-[#2563EB]" size={28} />
           Content Calendar
         </h2>
         <button
-          onClick={() => setIsCreatingPost(!isCreatingPost)} // CHANGED: This now toggles the form
-          className="bg-[#1E293B] text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2 hover:opacity-90"
+          onClick={() => setIsCreatingPost(!isCreatingPost)}
+          className="bg-[#1E293B] text-white font-semibold py-3 px-5 rounded-xl flex items-center gap-2 hover:scale-105 transition duration-300 cursor-pointer"
         >
-          <Plus size={20} />
+          <Edit size={20} />
           Create Post
         </button>
       </div>
 
-      {/* FIXED: Changed logic to show form *above* the calendar instead of replacing it */}
       {isCreatingPost && (
         <CreatePostForm onCancel={() => setIsCreatingPost(false)} />
       )}
-      
+
       <CalendarGrid />
     </div>
   );

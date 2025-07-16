@@ -1,8 +1,7 @@
-// src/context/ModalContext.tsx
-'use client';
+"use client";
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { X } from 'lucide-react';
+import React, { createContext, useState, useContext, ReactNode } from "react";
+// import { X } from 'lucide-react';
 
 type ModalContextType = {
   showModal: (content: ReactNode) => void;
@@ -30,11 +29,11 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
     <ModalContext.Provider value={{ showModal, hideModal }}>
       {children}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center animate-fade-in"
           onClick={hideModal}
         >
-          <div 
+          <div
             className="bg-white rounded-2xl shadow-2xl w-full max-w-lg m-4"
             onClick={(e) => e.stopPropagation()} // Prevent clicks inside the modal from closing it
           >
@@ -49,7 +48,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
 export const useModal = () => {
   const context = useContext(ModalContext);
   if (context === undefined) {
-    throw new Error('useModal must be used within a ModalProvider');
+    throw new Error("useModal must be used within a ModalProvider");
   }
   return context;
 };

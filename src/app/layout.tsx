@@ -1,17 +1,20 @@
-// src/app/layout.tsx
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/Header';
-import LeftSidebar from '@/components/LeftSidebar';
-import RightSidebar from '@/components/RightSidebar';
-import { ModalProvider } from '@/context/ModalContext'; // ADDED
+// import type { Metadata } from 'next';
+import "./globals.css";
+import Header from "@/components/Header";
+import LeftSidebar from "@/components/LeftSidebar";
+import RightSidebar from "@/components/RightSidebar";
+import { ModalProvider } from "@/context/ModalContext"; // ADDED
+import { Poppins } from "next/font/google";
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "600", "700"], // Include only the weights you need
+  variable: "--font-poppins",
+});
 
 export const metadata = {
-  title: 'SocialPro Management',
-  description: 'Professional Social Media Suite',
+  title: "SocialPro Management",
+  description: "Professional Social Media Suite",
 };
 
 export default function RootLayout({
@@ -21,17 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#F1F5F9]`}>
-        {/* ADDED: ModalProvider now wraps the entire app */}
+      <body className={`${poppins.className} bg-[#F1F5F9]`}>
         <ModalProvider>
           <div className="flex flex-col h-screen">
             <Header />
-            <div className="w-full max-w-7xl mx-auto flex-1 p-4">
+            <div className="w-full max-w-7xl mx-auto flex-1 p-4 ">
               <div className="flex gap-6">
                 <LeftSidebar />
-                <main className="flex-1">
-                  {children}
-                </main>
+                <main className="flex-1">{children}</main>
                 <RightSidebar />
               </div>
             </div>

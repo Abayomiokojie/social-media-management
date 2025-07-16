@@ -1,11 +1,27 @@
-// src/components/CreatePostForm.tsx
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+"use client";
+
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { useState } from "react";
 
 type CreatePostFormProps = {
   onCancel: () => void;
 };
 
+const platformOptions = [
+  { name: "Facebook", icon: Facebook, color: "text-blue-600" },
+  { name: "Instagram", icon: Instagram, color: "text-pink-500" },
+  { name: "Twitter", icon: Twitter, color: "text-sky-500" },
+  { name: "LinkedIn", icon: Linkedin, color: "text-blue-700" },
+];
+
 export default function CreatePostForm({ onCancel }: CreatePostFormProps) {
+  const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
+
+  const togglePlatform = (name: string) => {
+    setSelectedPlatforms((prev) =>
+      prev.includes(name) ? prev.filter((p) => p !== name) : [...prev, name]
+    );
+  };
   return (
     // FIXED: Added container with correct background, padding, and border.
     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 mb-6">
@@ -14,7 +30,12 @@ export default function CreatePostForm({ onCancel }: CreatePostFormProps) {
 
         {/* Content Text Area */}
         <div>
-          <label htmlFor="content" className="text-sm font-medium text-gray-600 mb-1 block">Content</label>
+          <label
+            htmlFor="content"
+            className="text-sm font-medium text-gray-600 mb-1 block"
+          >
+            Content
+          </label>
           <textarea
             id="content"
             rows={4}
@@ -25,28 +46,41 @@ export default function CreatePostForm({ onCancel }: CreatePostFormProps) {
 
         {/* Platforms */}
         <div>
-          <label className="text-sm font-medium text-gray-600 mb-2 block">Platforms</label>
-          <div className="flex gap-4">
-            <div className="flex items-center gap-2 p-3 bg-white border border-gray-300 rounded-lg cursor-pointer">
-              <Facebook size={20} className="text-blue-600" /> <span className="font-medium">Facebook</span>
-            </div>
-            <div className="flex items-center gap-2 p-3 bg-white border border-gray-300 rounded-lg cursor-pointer">
-              <Instagram size={20} className="text-pink-500" /> <span className="font-medium">Instagram</span>
-            </div>
-            <div className="flex items-center gap-2 p-3 bg-white border border-gray-300 rounded-lg cursor-pointer">
-              <Twitter size={20} className="text-sky-500" /> <span className="font-medium">Twitter</span>
-            </div>
-            <div className="flex items-center gap-2 p-3 bg-white border border-gray-300 rounded-lg cursor-pointer">
-              <Linkedin size={20} className="text-blue-700" /> <span className="font-medium">LinkedIn</span>
-            </div>
+          <label className="text-base font-medium text-gray-600 mb-2 block">
+            Platforms
+          </label>
+
+          <div className="flex gap-4 flex-wrap text-sm">
+            {platformOptions.map(({ name, icon: Icon, color }) => {
+              const isSelected = selectedPlatforms.includes(name);
+              return (
+                <div
+                  key={name}
+                  onClick={() => togglePlatform(name)}
+                  className={`flex items-center gap-2 py-2 px-4 border rounded-lg cursor-pointer transition ${
+                    isSelected
+                      ? "bg-blue-100 border-blue-500"
+                      : "bg-white border-gray-300"
+                  }`}
+                >
+                  <Icon size={14} className={`${color}`} />
+                  <span className="font-semibold">{name}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         {/* Schedule Date */}
         <div>
-          <label htmlFor="scheduleDate" className="text-sm font-medium text-gray-600 mb-1 block">Schedule Date</label>
+          <label
+            htmlFor="scheduleDate"
+            className="text-sm font-medium text-gray-600 mb-1 block"
+          >
+            Schedule Date
+          </label>
           <input
-            type="date"
+            type="datetime-local"
             id="scheduleDate"
             className="w-full p-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
@@ -56,11 +90,11 @@ export default function CreatePostForm({ onCancel }: CreatePostFormProps) {
         <div className="flex justify-end gap-3 pt-4">
           <button
             onClick={onCancel}
-            className="font-semibold py-2 px-4 rounded-lg text-gray-600 hover:bg-gray-100"
+            className="font-semibold py-3 px-4 rounded-xl text-gray-600 hover:bg-gray-200 cursor-pointer"
           >
             Cancel
           </button>
-          <button className="bg-[#1E293B] text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2 hover:opacity-90">
+          <button className="bg-[#1E293B] text-white font-semibold py-3 px-4 rounded-xl flex items-center gap-2 hover:opacity-90 cursor-pointer">
             Schedule Post
           </button>
         </div>
