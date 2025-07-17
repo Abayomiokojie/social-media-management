@@ -1,6 +1,6 @@
 # SocialPro Management
 
-SocialPro Management is a professional social media suite built with Next.js and Tailwind CSS. It provides a modern interface for managing social media accounts, scheduling posts, and analyzing engagement.
+SocialPro Management is a social media suite built with Next.js and Tailwind CSS. It provides a modern user interface for managing social media accounts, scheduling posts, and analyzing engagement.
 
 ## Features
 

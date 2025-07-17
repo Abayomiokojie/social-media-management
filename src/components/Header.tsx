@@ -34,12 +34,15 @@ export default function Header() {
           </div>
         </div>
         <div className="flex items-center gap-6">
-          <div className="p-2 backdrop:blur-sm bg-gray-600/50 rounded-xl">
+          <button
+            className="p-2 backdrop:blur-sm bg-gray-600/50 rounded-xl"
+            title="Notifications"
+          >
             <Bell
               size={28}
               className="text-gray-100 cursor-pointer hover:text-white  "
             />
-          </div>
+          </button>
           <button
             className="flex items-center gap-3 py-2 px-3 bg-gray-600/50 rounded-xl cursor-pointer hover:scale-105 transition duration-300"
             // onClick={() => alert("Profile settings coming soon!")}

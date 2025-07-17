@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { NotificationSetting } from "@/types/index";
+import SaveButton from "../saveButton";
 
-interface NotificationSetting {
-  id: string;
-  label: string;
-  description: string;
-  enabled: boolean;
-}
+// interface NotificationSetting {
+//   id: string;
+//   label: string;
+//   description: string;
+//   enabled: boolean;
+// }
 
 const NotificationsTab: React.FC = () => {
   const [notifications, setNotifications] = useState<NotificationSetting[]>([
@@ -75,6 +77,53 @@ const NotificationsTab: React.FC = () => {
     );
   };
 
+  //Save update
+
+  const [originalSettings, setOriginalSettings] = useState<
+    NotificationSetting[]
+  >([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [hasChanges, setHasChanges] = useState(false);
+
+  useEffect(() => {
+    // Store original settings for comparison
+    setOriginalSettings(JSON.parse(JSON.stringify(notifications)));
+  }, []);
+
+  useEffect(() => {
+    // Check if there are any changes
+    const changed =
+      JSON.stringify(notifications) !== JSON.stringify(originalSettings);
+    setHasChanges(changed);
+    if (changed) setIsSaved(false);
+  }, [notifications, originalSettings]);
+
+  // Handle save action
+  const handleSave = async () => {
+    setIsLoading(true);
+
+    try {
+      // Simulate API call with the changed settings
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // Update original settings to current settings
+      setOriginalSettings(JSON.parse(JSON.stringify(notifications)));
+
+      setIsSaved(true);
+      setHasChanges(false);
+
+      // Show success animation
+      setTimeout(() => {
+        setIsSaved(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Error saving notifications:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="p-8">
       <h3 className="text-2xl font-semibold mb-2">Notification Preferences</h3>
@@ -116,9 +165,11 @@ const NotificationsTab: React.FC = () => {
       </div>
 
       <div className="mt-8 flex justify-end">
-        <button className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
-          Save Changes
-        </button>
+        <SaveButton
+          onClick={handleSave}
+          isLoading={isLoading}
+          isSaved={isSaved}
+        />
       </div>
     </div>
   );

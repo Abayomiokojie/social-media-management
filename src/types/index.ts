@@ -21,3 +21,10 @@ export interface SettingsProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
+export interface NotificationSetting {
+  id: string;
+  label: string;
+  description: string;
+  enabled: boolean;
+}

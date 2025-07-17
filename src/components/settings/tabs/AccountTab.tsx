@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import SaveButton from "../saveButton";
 
 const AccountTab: React.FC = () => {
   const [passwords, setPasswords] = useState({
@@ -8,6 +9,9 @@ const AccountTab: React.FC = () => {
     new: "",
     confirm: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [hasChanges, setHasChanges] = useState(false);
 
   const [security, setSecurity] = useState({
     twoFactor: true,
@@ -22,9 +26,34 @@ const AccountTab: React.FC = () => {
     });
   };
 
-  const handleSave = () => {
-    // Logic to save changes
-    console.log("Changes saved:", { passwords, security });
+  //   const handleSave = () => {
+  //     // Logic to save changes
+  //     console.log("Changes saved:", { passwords, security });
+  //   };
+
+  // Handle save action
+  const handleSave = async () => {
+    setIsLoading(true);
+
+    try {
+      // Simulate API call with the changed settings
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // Update original settings to current settings
+      //   setOriginalSettings(JSON.parse(JSON.stringify(notifications)));
+
+      setIsSaved(true);
+      setHasChanges(false);
+
+      // Show success animation
+      setTimeout(() => {
+        setIsSaved(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Error saving notifications:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -154,9 +183,14 @@ const AccountTab: React.FC = () => {
       </div>
 
       <div className="mt-8 flex justify-end">
-        <button className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+        {/* <button className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
           Save Changes
-        </button>
+        </button> */}
+        <SaveButton
+          onClick={handleSave}
+          isLoading={isLoading}
+          isSaved={isSaved}
+        />
       </div>
     </div>
   );

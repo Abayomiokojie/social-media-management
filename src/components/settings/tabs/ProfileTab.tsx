@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Camera, Upload } from "lucide-react";
 import Image from "next/image";
+import SaveButton from "../saveButton";
 
 const ProfileTab: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,10 @@ const ProfileTab: React.FC = () => {
     bio: "Social Media Manager passionate about creating engaging content and building communities.",
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [hasChanges, setHasChanges] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -24,6 +29,32 @@ const ProfileTab: React.FC = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setHasChanges(true);
+    setIsSaved(false);
+  };
+
+  const handleSave = async () => {
+    setIsLoading(true);
+
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      // const response = await updateProfile(formData);
+
+      setIsSaved(true);
+      setHasChanges(false);
+
+      // Reset the saved state after 3 seconds
+      setTimeout(() => {
+        setIsSaved(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Error saving profile:", error);
+      // Handle error - show toast notification, etc.
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -41,7 +72,7 @@ const ProfileTab: React.FC = () => {
         <div className="flex items-center gap-4">
           <div className="relative">
             <Image
-              src="https://i.pravatar.cc/150?img=3"
+              src="https://i.pravatar.cc/150?img=32"
               width={150}
               height={150}
               alt="Profile"
@@ -74,7 +105,7 @@ const ProfileTab: React.FC = () => {
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-600"
           />
         </div>
         <div>
@@ -118,6 +149,7 @@ const ProfileTab: React.FC = () => {
             Website
           </label>
           <input
+            title="Website"
             type="url"
             name="website"
             value={formData.website}
@@ -152,6 +184,7 @@ const ProfileTab: React.FC = () => {
           Bio
         </label>
         <textarea
+          title="Bio"
           name="bio"
           value={formData.bio}
           onChange={handleChange}
@@ -161,9 +194,14 @@ const ProfileTab: React.FC = () => {
       </div>
 
       <div className="mt-8 flex justify-end">
-        <button className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
+        {/* <button className="px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors">
           Save Changes
-        </button>
+        </button> */}
+        <SaveButton
+          onClick={handleSave}
+          isLoading={isLoading}
+          isSaved={isSaved}
+        />
       </div>
     </div>
   );
