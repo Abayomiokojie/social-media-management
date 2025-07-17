@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { X, User, Shield, Bell, Eye, LogOut } from "lucide-react";
 import ProfileTab from "./tabs/ProfileTab";
 import AccountTab from "./tabs/AccountTab";
@@ -8,6 +8,18 @@ import { SettingsProps } from "@/types/index";
 
 const Settings = ({ isOpen, onClose }: SettingsProps) => {
   const [activeTab, setActiveTab] = useState("profile");
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -55,10 +67,11 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop:blur-2xl flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-hidden">
-        <div className="flex h-full">
+      <div className="bg-white shadow-2xl w-full max-w-4xl rounded-2xl p-4 ">
+        {/* <div className="flex h-full"> */}
+        <div className="flex max-h-[90vh]  ">
           {/* Sidebar */}
-          <div className="w-72 bg-gray-50 p-6 border-r border-gray-200">
+          <div className="w-72 bg-gray-50 p-6 border-r border-gray-200 flex-shrink-0 overflow-hidden">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-2">
                 <User className="w-5 h-5 text-blue-600" />
@@ -114,9 +127,7 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
           </div>
 
           {/* Content */}
-          <div className="flex-1 h-[850px] overflow-y-scroll">
-            {renderTabContent()}
-          </div>
+          <div className="flex-1 overflow-y-auto  ">{renderTabContent()}</div>
         </div>
       </div>
     </div>

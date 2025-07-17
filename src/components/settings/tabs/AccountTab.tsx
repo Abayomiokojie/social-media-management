@@ -59,13 +59,15 @@ const AccountTab: React.FC = () => {
   return (
     <div className="p-8">
       <h3 className="text-2xl font-semibold mb-2">Account Security</h3>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-600 mb-8 font-medium">
         Manage your password and security settings.
       </p>
 
       {/* Change Password Section */}
       <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
-        <h4 className="text-lg font-semibold mb-4">Change Password</h4>
+        <h4 className="text-base font-semibold mb-4 text-gray-600">
+          Change Password
+        </h4>
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -110,7 +112,9 @@ const AccountTab: React.FC = () => {
 
       {/* Security Preferences */}
       <div>
-        <h4 className="text-lg font-semibold mb-4">Security Preferences</h4>
+        <h4 className="text-base text-gray-600 font-semibold mb-4">
+          Security Preferences
+        </h4>
         <div className="space-y-4">
           <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-between">
             <div>

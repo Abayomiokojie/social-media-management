@@ -127,7 +127,7 @@ const NotificationsTab: React.FC = () => {
   return (
     <div className="p-8">
       <h3 className="text-2xl font-semibold mb-2">Notification Preferences</h3>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-600 mb-8 font-medium">
         Choose how you want to be notified about activity.
       </p>
 

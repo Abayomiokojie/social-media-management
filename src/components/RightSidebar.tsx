@@ -28,7 +28,7 @@ const overviewItems = [
 
 export default function RightSidebar() {
   return (
-    <aside className="w-80 flex flex-col gap-6  ">
+    <aside className="lg:w-80 flex  sm:grid grid-cols-2 grid-rows-1 lg:flex flex-col gap-6  ">
       <div className="bg-gray-50 p-6 rounded-xl flex flex-col gap-4 shadow-md">
         <h3 className="text-base font-bold text-gray-800">Post Overview</h3>
         <ul className="space-y-3 text-sm">

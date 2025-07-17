@@ -13,13 +13,15 @@ const PrivacyTab: React.FC = () => {
   return (
     <div className="p-8">
       <h3 className="text-2xl font-semibold mb-2">Privacy & Data</h3>
-      <p className="text-gray-600 mb-8">
+      <p className="text-gray-600 mb-8 font-medium">
         Control your privacy and data sharing preferences.
       </p>
 
       {/* Profile Visibility */}
       <div className="mb-8">
-        <h4 className="text-lg font-semibold mb-4">Profile Visibility</h4>
+        <h4 className="text-base font-semibold mb-4 text-gray-600">
+          Profile Visibility
+        </h4>
         <div className="space-y-3">
           <label className="flex items-start p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
             <input
@@ -80,7 +82,7 @@ const PrivacyTab: React.FC = () => {
 
       {/* Contact Information Visibility */}
       <div className="mb-8">
-        <h4 className="text-lg font-semibold mb-4">
+        <h4 className="text-base font-semibold mb-4 text-gray-600">
           Contact Information Visibility
         </h4>
         <div className="space-y-4">
@@ -151,7 +153,9 @@ const PrivacyTab: React.FC = () => {
 
       {/* Data & Analytics */}
       <div>
-        <h4 className="text-lg font-semibold mb-4">Data & Analytics</h4>
+        <h4 className="text-base font-semibold mb-4 text-gray-600">
+          Data & Analytics
+        </h4>
         <div className="space-y-4">
           <div className="bg-white border border-gray-200 rounded-lg p-4 flex items-center justify-between">
             <div>

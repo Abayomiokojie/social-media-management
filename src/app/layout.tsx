@@ -26,15 +26,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.className} bg-[#F1F5F9]`}>
         <ModalProvider>
-          <div className="flex flex-col h-screen">
-            <Header />
-            <div className="w-full max-w-7xl mx-auto flex-1 p-4 ">
-              <div className="flex gap-6">
-                <LeftSidebar />
-                <main className="flex-1">{children}</main>
-                <RightSidebar />
-              </div>
-            </div>
+          <Header />
+          <div className="w-full max-w-7xl mx-auto flex-1 p-4 grid lg:flex gap-6 ">
+            {/* <div className="flex gap-6"> */}
+            <LeftSidebar />
+            <main className="flex-1">{children}</main>
+            <RightSidebar />
+            {/* </div> */}
           </div>
         </ModalProvider>
       </body>

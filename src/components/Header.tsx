@@ -14,16 +14,15 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <div className="bg-[#4F46E5] p-2 rounded-md">
             <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24"
-              fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
             >
-              <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" fill="white" />
-              <path d="M12 12L22 7" stroke="#4F46E5" strokeWidth="2" />
-              <path d="M12 12V22" stroke="#4F46E5" strokeWidth="2" />
-              <path d="M12 12L2 7" stroke="#4F46E5" strokeWidth="2" />
+              <path
+                fill="#fff"
+                d="M3 12a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1zm0 8a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1zm10 0a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1zm1-17a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"
+              ></path>
             </svg>
           </div>
           <div>
