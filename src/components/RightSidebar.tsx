@@ -48,7 +48,7 @@ export default function RightSidebar() {
         </ul>
       </div>
 
-      <div className="bg-brand-card-bg p-6 rounded-xl shadow-md flex flex-col gap-4 backdrop-blur-md bg-white/40">
+      <div className="bg-brand-card-bg p-6 rounded-xl shadow-md flex flex-col gap-4 backdrop-blur-md bg-white/40 dark:bg-gray-50">
         <h3 className="text-base font-bold text-gray-800 flex items-center gap-2">
           {/* FIXED: Changed icon to a Bell and made it orange */}
           <Bell className="text-orange-500" size={20} />
@@ -57,7 +57,7 @@ export default function RightSidebar() {
         <ul className="space-y-4">
           {mockRecentActivity.map((activity) => (
             <li key={activity.id} className="flex items-start gap-3">
-              <div className="bg-orange-100 p-2 rounded-full mt-1">
+              <div className="bg-gray-100 p-2 rounded-full mt-1">
                 <Bell className="text-orange-500" size={16} />
               </div>
               <div>

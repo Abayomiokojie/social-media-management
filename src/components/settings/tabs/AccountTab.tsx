@@ -58,7 +58,9 @@ const AccountTab: React.FC = () => {
 
   return (
     <div className="p-8">
-      <h3 className="text-2xl font-semibold mb-2">Account Security</h3>
+      <h3 className="text-2xl font-semibold mb-2 text-gray-600">
+        Account Security
+      </h3>
       <p className="text-gray-600 mb-8 font-medium">
         Manage your password and security settings.
       </p>
@@ -74,6 +76,7 @@ const AccountTab: React.FC = () => {
               Current Password
             </label>
             <input
+              title="Current Password"
               type="password"
               name="current"
               value={passwords.current}
@@ -87,6 +90,7 @@ const AccountTab: React.FC = () => {
                 New Password
               </label>
               <input
+                title="New Password"
                 type="password"
                 name="new"
                 value={passwords.new}
@@ -99,6 +103,7 @@ const AccountTab: React.FC = () => {
                 Confirm Password
               </label>
               <input
+                title="Confirm Password"
                 type="password"
                 name="confirm"
                 value={passwords.confirm}
@@ -125,6 +130,7 @@ const AccountTab: React.FC = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
+                title="Two-Factor Authentication"
                 type="checkbox"
                 checked={security.twoFactor}
                 onChange={(e) =>
@@ -145,6 +151,7 @@ const AccountTab: React.FC = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
+                title="Login Notifications"
                 type="checkbox"
                 checked={security.loginNotifications}
                 onChange={(e) =>

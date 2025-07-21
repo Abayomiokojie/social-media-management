@@ -4,15 +4,17 @@ import { mockUser } from "@/lib/mockData";
 import Image from "next/image";
 import Settings from "./settings/settings";
 import { useState } from "react";
+import { ModeToggle } from "./ModeToggle";
+// import Link from "next/link";
 
 export default function Header() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   return (
-    <header className="bg-[#111827] text-white w-full border-b border-gray-700">
+    <header className="bg-[#111827] text-white w-full border-b border-gray-700 bg-theme-header">
       {/* FIXED: Wrapped content in a max-width, centered div to correct spacing. */}
       <div className="flex items-center justify-between max-w-7xl mx-auto p-4">
         <div className="flex items-center gap-4">
-          <div className="bg-[#4F46E5] p-2 rounded-md">
+          <div className="bg-[#4F46E5] p-2 rounded-md dark:bg-blue-800">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width={24}
@@ -33,6 +35,12 @@ export default function Header() {
           </div>
         </div>
         <div className="flex items-center gap-6">
+          {/* <Link href="/test" className="text-gray-300 hover:text-white p-4">
+            test page
+          </Link> */}
+          <div>
+            <ModeToggle />
+          </div>
           <button
             className="p-2 backdrop:blur-sm bg-gray-600/50 rounded-xl"
             title="Notifications"

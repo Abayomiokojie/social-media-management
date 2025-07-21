@@ -75,7 +75,7 @@ export default function ContentCalendar() {
   const [isCreatingPost, setIsCreatingPost] = useState(false);
 
   return (
-    <div className="bg-[#FFFFFF] p-6 rounded-xl shadow-sm h-full flex flex-col flex-1 min-w-[400px]">
+    <div className="bg-[#FFFFFF] p-6 rounded-xl shadow-lg h-full flex flex-col flex-1 min-w-[400px]">
       <div className="flex justify-between items-center mb-6 gap-2">
         <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-3">
           <CalendarDays className="text-[#2563EB]" size={28} />

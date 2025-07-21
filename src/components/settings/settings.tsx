@@ -75,15 +75,17 @@ const Settings = ({ isOpen, onClose }: SettingsProps) => {
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center gap-2">
                 <User className="w-5 h-5 text-blue-600" />
-                <h2 className="text-xl font-semibold">Settings</h2>
+                <h2 className="text-lg font-semibold text-gray-600">
+                  Settings
+                </h2>
               </div>
               <button
                 type="button"
                 aria-label="Close"
                 onClick={onClose}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
+                className="text-gray-500 hover:text-gray-600 transition-colors"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" strokeWidth={3} />
               </button>
             </div>
 

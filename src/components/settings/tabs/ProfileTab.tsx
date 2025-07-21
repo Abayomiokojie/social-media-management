@@ -59,13 +59,15 @@ const ProfileTab: React.FC = () => {
 
   return (
     <div className="p-8">
-      <h3 className="text-2xl font-semibold mb-2">Profile Information</h3>
+      <h3 className="text-2xl font-semibold mb-2 text-gray-600">
+        Profile Information
+      </h3>
       <p className="text-gray-600 mb-8 font-medium">
         Update your personal details and profile picture.
       </p>
 
       {/* Profile Picture */}
-      <div className="mb-8">
+      <div className="mb-8 bg-blue-200/30 p-5 rounded-xl">
         <label className="block text-sm font-medium text-gray-700 mb-4">
           Profile Picture
         </label>
@@ -76,9 +78,9 @@ const ProfileTab: React.FC = () => {
               width={150}
               height={150}
               alt="Profile"
-              className="w-24 h-24 rounded-full object-cover"
+              className="w-24 h-24 rounded-full object-cover border-2 border-white"
             />
-            <div className="absolute bottom-0 right-0 bg-blue-600 p-1.5 rounded-full cursor-pointer hover:bg-blue-700 transition-colors">
+            <div className="absolute bottom-0 right-0 bg-blue-600 p-1.5 rounded-full cursor-pointer hover:bg-blue-700 transition-colors ">
               <Camera className="w-4 h-4 text-white" />
             </div>
           </div>
@@ -87,7 +89,7 @@ const ProfileTab: React.FC = () => {
               <Upload className="w-4 h-4" />
               Upload New
             </button>
-            <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-gray-700">
+            <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-gray-700 bg-gray-100">
               Remove
             </button>
           </div>
@@ -101,6 +103,7 @@ const ProfileTab: React.FC = () => {
             Full Name
           </label>
           <input
+            title="Full Name"
             type="text"
             name="fullName"
             value={formData.fullName}
@@ -113,6 +116,7 @@ const ProfileTab: React.FC = () => {
             Email Address
           </label>
           <input
+            title="Email Address"
             type="email"
             name="email"
             value={formData.email}
@@ -125,6 +129,7 @@ const ProfileTab: React.FC = () => {
             Phone Number
           </label>
           <input
+            title="Phone Number"
             type="tel"
             name="phone"
             value={formData.phone}
@@ -137,6 +142,7 @@ const ProfileTab: React.FC = () => {
             Location
           </label>
           <input
+            title="Location"
             type="text"
             name="location"
             value={formData.location}

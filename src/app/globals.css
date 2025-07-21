@@ -1,7 +1,11 @@
-/* src/app/globals.css */
 @import "tailwindcss";
-/* @import "tailwindcss/typography";
-@import "tailwindcss/forms"; */
+@custom-variant dark (&:where(.dark, .dark *));
+@tailwind utilities;
+
+
+html {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 button {
     @apply hover:scale-105 transition-all duration-300 cursor-pointer;
@@ -11,3 +15,35 @@ textarea,
 input {
     @apply text-gray-600;
 }
+
+
+/* :root {
+    --bg-primary: 241 245 249;
+    --text-primary: 17 24 39;
+    --bg-card: 255 255 255;
+    --bg-header: #0f182d
+}
+
+.dark {
+    --bg-primary: 17 24 39;
+    --text-primary: 241 245 249;
+    --bg-card: 30 41 59;
+    --bg-header: #310076
+} */
+
+/* Use the variables */
+/* .bg-theme-primary {
+    background-color: rgb(var(--bg-primary));
+}
+
+.text-theme-primary {
+    color: rgb(var(--text-primary));
+}
+
+.bg-theme-card {
+    background-color: rgb(var(--bg-card));
+}
+
+.bg-theme-header {
+    background-color: var(--bg-header);
+} */

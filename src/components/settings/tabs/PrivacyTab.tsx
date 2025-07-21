@@ -12,7 +12,9 @@ const PrivacyTab: React.FC = () => {
 
   return (
     <div className="p-8">
-      <h3 className="text-2xl font-semibold mb-2">Privacy & Data</h3>
+      <h3 className="text-2xl font-semibold mb-2 text-gray-600">
+        Privacy & Data
+      </h3>
       <p className="text-gray-600 mb-8 font-medium">
         Control your privacy and data sharing preferences.
       </p>
@@ -23,7 +25,7 @@ const PrivacyTab: React.FC = () => {
           Profile Visibility
         </h4>
         <div className="space-y-3">
-          <label className="flex items-start p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+          <label className="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
             <input
               type="radio"
               name="visibility"
@@ -35,13 +37,13 @@ const PrivacyTab: React.FC = () => {
               className="mt-1 mr-3"
             />
             <div>
-              <div className="font-medium">Public</div>
+              <div className="font-semibold text-gray-600">Public</div>
               <div className="text-sm text-gray-600">
                 Anyone can see your profile
               </div>
             </div>
           </label>
-          <label className="flex items-start p-4 border-2 border-blue-500 bg-blue-50 rounded-lg cursor-pointer">
+          <label className="flex items-center p-4 border-2 border-blue-500 bg-blue-50 rounded-lg cursor-pointer">
             <input
               type="radio"
               name="visibility"
@@ -53,13 +55,13 @@ const PrivacyTab: React.FC = () => {
               className="mt-1 mr-3"
             />
             <div>
-              <div className="font-medium">Team Only</div>
+              <div className="font-semibold text-gray-600">Team Only</div>
               <div className="text-sm text-gray-600">
                 Only team members can see your profile
               </div>
             </div>
           </label>
-          <label className="flex items-start p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+          <label className="flex items-center p-4 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
             <input
               type="radio"
               name="visibility"
@@ -71,7 +73,7 @@ const PrivacyTab: React.FC = () => {
               className="mt-1 mr-3"
             />
             <div>
-              <div className="font-medium">Private</div>
+              <div className="font-semibold text-gray-600">Private</div>
               <div className="text-sm text-gray-600">
                 Only you can see your profile
               </div>
@@ -95,6 +97,7 @@ const PrivacyTab: React.FC = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
+                title="Show Email Address"
                 type="checkbox"
                 checked={privacy.showEmail}
                 onChange={(e) =>
@@ -115,6 +118,7 @@ const PrivacyTab: React.FC = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
+                title="Show Phone Number"
                 type="checkbox"
                 checked={privacy.showPhone}
                 onChange={(e) =>
@@ -135,6 +139,7 @@ const PrivacyTab: React.FC = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
+                title="Allow Direct Messages"
                 type="checkbox"
                 checked={privacy.allowDirectMessages}
                 onChange={(e) =>
@@ -166,6 +171,7 @@ const PrivacyTab: React.FC = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
+                title="Data Sharing"
                 type="checkbox"
                 checked={privacy.dataSharing}
                 onChange={(e) =>
@@ -186,6 +192,7 @@ const PrivacyTab: React.FC = () => {
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
+                title="Analytics Tracking"
                 type="checkbox"
                 checked={privacy.analyticsTracking}
                 onChange={(e) =>

@@ -19,8 +19,8 @@ export default function LeftSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="p-4 bg-[#FFFFFF] lg:min-w-64 rounded-xl shadow-sm flex flex-col gap-8">
-      <nav>
+    <aside className="p-4 bg-[#FFFFFF] lg:min-w-64 rounded-xl shadow-lg flex flex-col gap-8 lg:h-[50vh] ">
+      <nav className="mb-4">
         <ul className="space-y-4">
           {/* FIXED: Mapped over links for dynamic, intelligent navigation */}
           {navLinks.map((link) => {
@@ -44,7 +44,7 @@ export default function LeftSidebar() {
         </ul>
       </nav>
       <div>
-        <h3 className="px-3 text-sm font-bold text-gray-700 uppercase tracking-wide mb-3 flex items-center gap-2">
+        <h3 className="px-3 text-sm font-bold text-gray-700 uppercase tracking-wide mb-3 flex items-center gap-2  ">
           <Lightbulb className="text-gray-500" size={16} /> Quick Templates
         </h3>
         <ul className="space-y-0.5 text-sm">
